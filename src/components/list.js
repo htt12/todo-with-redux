@@ -6,14 +6,19 @@ import {Link} from 'react-router-dom';
 
 class List extends Component {
     componentDidMount(){
-        debugger;
+        
         this.props.getList();
     }
 
 
     render(){
         const itemElements = this.props.list.map((item, index)=>{
-            return <li className='collection-item' key={index}>{item.title}</li>
+            console.log('item: ', item)
+            return (
+                <li className='collection-item' key={index}>
+                    <Link to={`/item/${item._id}`}>{item.title}</Link>
+                </li>
+            );
         })
 
         const style = {
@@ -34,7 +39,7 @@ class List extends Component {
     }
 }
 function mapStateToProps(state){
-    debugger;
+    
     return {
         list: state.list.items,
     }

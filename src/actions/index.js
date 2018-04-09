@@ -14,6 +14,15 @@ export function getList(){
     }
 }
 
+export function getSingleItem(id){
+    const response = axios.get(`${BASE_URL}/todos/${id + API_KEY}`);
+
+    return {
+        type: types.GET_SINGLE_ITEM,
+        payload: response,
+    }
+}
+
 export function addNewItem(item){
     const response = axios.post(`${BASE_URL}/todos${API_KEY}`, item);
 
@@ -22,3 +31,11 @@ export function addNewItem(item){
         payload: response,
     }
 }
+
+//Time it was created
+//Time it was completed
+//Add a button to complete them toggles
+//Delete item, both items should delete from client/server, redirects you back to list.
+    //axios.delete(....)
+//Toggle Complete
+    //axios.put(....)
